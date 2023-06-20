@@ -13,7 +13,7 @@ function App() {
           <Route path="/home" component={Home} />
           <Route path="/create" component={Create} />
         </Switch>
-        <h1>Henry Videogames Laucha Gay</h1>
+        <h1>Henry Videogames</h1>
       </div>
     </BrowserRouter>
   );

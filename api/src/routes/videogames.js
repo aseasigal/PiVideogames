@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Videogame, Genre, Genre_Videogame } = require('../db.js');
+const { Videogame, Genre, Genres_Videogames } = require('../db.js');
 const axios = require('axios');
 const { API_KEY, API_URL } = process.env;
 const { fn, col, where, Op } = require('sequelize');
@@ -113,8 +113,10 @@ router.post('/', async (req, res) => {
       image
     })
 
-    await Genre_Videogame.bulkCreate(genresIds.map(genreId => ({ genreId, videogameId: newVideoGame.id })));
-  
+    if (Array.isArray(genresIds) && genresIds?.length > 0) {
+      await Genres_Videogames.bulkCreate(genresIds.map(genreId => ({ genreId, videogameId: newVideoGame.id })))
+    }
+    console.log(newVideoGame)
     res.json(newVideoGame);
   } catch (e) {
     console.log(e);

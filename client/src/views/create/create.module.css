@@ -1,0 +1,17 @@
+/* .divForm{
+    display:flex;
+    align-items: center;
+    justify-items: center;
+} */
+
+.Row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 80%;
+    margin: auto;
+}
+
+.Error {
+    font-size: 12px;
+    color: red;
+}

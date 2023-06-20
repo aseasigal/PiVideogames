@@ -1,0 +1,14 @@
+.DivFather {
+    display: 'flex';
+    gap: '1rem'
+}
+
+.DivCards {
+    display: 'flex';
+    flex-direction: 'column';
+    justify-content: 'center';
+    align-items: 'center';
+    background: #222;
+    padding: '1rem';
+    border-radius: '5px';
+}

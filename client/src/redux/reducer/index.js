@@ -1,4 +1,4 @@
-import { GET_BY_NAME, GET_GAMES } from "../actions"
+import { CREATE_NEW_GAME, GET_BY_NAME, GET_GAMES } from "../actions"
 
 let initialState = {allGames:[], gamesCopy:[]}
 function rootReducer(state = initialState,action){
@@ -14,6 +14,12 @@ function rootReducer(state = initialState,action){
         return{
             ...state,
             allGames:action.payload
+        }
+    case CREATE_NEW_GAME:
+        return{
+            ...state,
+            allGames:action.payload,
+            gamesCopy:action.payload
         }
     
         default :
