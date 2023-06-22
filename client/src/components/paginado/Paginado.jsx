@@ -1,13 +1,11 @@
 import React from "react";
-import style from "./paginado.module.css"
-
+import "./paginado.css"
 export default function Paginado ({gamesPerPage, allGames, paginado}){
     const pageNumbers = []
 
     for (let i=0; i<=Math.ceil(allGames/gamesPerPage);i++){
         pageNumbers.push(i+1)
     }
-    console.log(pageNumbers)
     return (
         <nav className="paginacion">
             <ul>

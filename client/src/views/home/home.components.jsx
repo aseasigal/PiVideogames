@@ -33,16 +33,15 @@ function Home() {
   useEffect(() => {
     dispatch(getGames());
   }, []);
-  console.log(currentGames)
   return (
     <div>
+      <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
+      <Cards allGames={currentGames} />
       <Paginado
       gamesPerPage= {gamesPerPage}
       allGames={allGames.length}
       paginado={paginado}
       />
-      <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
-      <Cards allGames={currentGames} />
     </div>
   );
 }
