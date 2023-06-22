@@ -4,16 +4,18 @@ import { useDispatch,useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getGamesDetails } from "../../redux/actions";
 import { Link } from 'react-router-dom';
+import { cleanDetail } from '../../redux/actions';
+
 
 const GamesDetail = (props) => {
 const dispatch = useDispatch()
 const {id} = useParams()
 
+const gamesDetail = useSelector((state)=>state.gamesDetail)
 React.useEffect(()=>{
   dispatch(getGamesDetails(id))
+  return()=>{dispatch(cleanDetail())}
 },[])
-const gamesDetail = useSelector((state)=>state.gamesDetail)
-console.log(gamesDetail)
 return (
   <div className="detail">
     <h1>{gamesDetail?.name}</h1>

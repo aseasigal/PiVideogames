@@ -1,4 +1,4 @@
-import { CREATE_NEW_GAME, FILTER_BY_GENRE, GET_BY_GENRE, GET_BY_NAME, GET_GAMES, GET_GAMES_DETAIL } from "../actions"
+import { CLEAN_DETAIL, CREATE_NEW_GAME, FILTER_BY_GENRE, GET_BY_GENRE, GET_BY_NAME, GET_GAMES, GET_GAMES_DETAIL } from "../actions"
 let initialState = {allGames:[], gamesCopy:[], gamesDetail:{}, allGenres:[]}
 function rootReducer(state = initialState,action){
     switch(action.type){
@@ -7,6 +7,11 @@ function rootReducer(state = initialState,action){
             ...state,
             allGames:action.payload,
             gamesCopy:action.payload,
+        }
+    case CLEAN_DETAIL:
+        return{
+            ...state,
+            gamesDetail:{}
         }
     case GET_BY_GENRE:
         return{

@@ -5,6 +5,7 @@ export const CREATE_NEW_GAME = "CREATE_NEW_GAME"
 export const GET_GAMES_DETAIL = "GET_GAMES_DETAIL"
 export const FILTER_BY_GENRE = "FILTER_BY_GENRE"
 export const GET_BY_GENRE = "GET_BY_GENRE"
+export const CLEAN_DETAIL = "CLEAN_DETAIL"
 
 export function getGames(){
     return async function (dispatch){
@@ -16,6 +17,11 @@ export function getGames(){
     }
 }
 
+export function cleanDetail(){
+    return {
+        type:"CLEAN_DETAIL"
+    }
+}
 export function getGamesDetails(id){
     return async function (dispatch){
         const response = await axios.get(`http://localhost:3001/api/videogames/${id}`)
