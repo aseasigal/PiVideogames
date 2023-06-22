@@ -8,7 +8,7 @@ const router = Router();
 
 router.get('/', async (req, res) => {
   try {
-    let url = `${API_URL}/games?key=${API_KEY}&page_size=15`;
+    let url = `${API_URL}/games?key=${API_KEY}`;
 
     const searchTerm = req.query.name?.toLowerCase();
 
@@ -47,7 +47,7 @@ router.get('/', async (req, res) => {
       }))
     ];
 
-    res.json(result.slice(0, 15));
+    res.json(result);
   } catch (e) {
     console.log(e);
     res.send(e);

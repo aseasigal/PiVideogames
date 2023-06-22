@@ -13,7 +13,7 @@ function Home() {
   const [filtered, setFiltered] = useState(gamesCopy);
   const [searchGame, setSearchGame] = useState("");
   const [currentPage, setCurrentPage] = useState(1)
-  const [gamesPerPage, setGamesPerPage] = useState(5)
+  const [gamesPerPage, setGamesPerPage] = useState(15)
   const indexOfLastGame = currentPage * gamesPerPage
   const indexOfFirstGame = indexOfLastGame - gamesPerPage
   const currentGames = allGames.slice(indexOfFirstGame,indexOfLastGame)
