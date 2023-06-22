@@ -1,12 +1,16 @@
-function Navbar ({handleChange,handleSubmit}){
-    return (
-        <div>
-            <form onChange={handleChange}>
-            <input placeholder="Busque un Juego" type="search" />
-            <button type="submit" onClick={handleSubmit}>Buscar</button>
-            </form>
-        </div>
-    )
+import styles from './navbar.module.css';
+
+function Navbar({ handleChange, handleSubmit }) {
+  return (
+    <div className={styles.Navbar}>
+      <form onChange={handleChange}>
+        <input className={styles.NavbarInput} type="search" />
+        <button className={styles.NavbarButton} type="submit" onClick={handleSubmit}>
+          Buscar
+        </button>
+      </form>
+    </div>
+  );
 }
 
-export default Navbar
+export default Navbar;

@@ -3,6 +3,7 @@ import './App.css';
 import Home from './views/home/home.components';
 import Create from './views/create/create.component';
 import Detail from './views/detail/detail.component';
+import Landing from './views/landing/landing.component';
 
 function App() {
   return (
@@ -12,8 +13,8 @@ function App() {
           <Route path="/home/:id" component={Detail} />
           <Route path="/home" component={Home} />
           <Route path="/create" component={Create} />
+          <Route exact path="" component={Landing}></Route>
         </Switch>
-        <h1>Henry Videogames</h1>
       </div>
     </BrowserRouter>
   );

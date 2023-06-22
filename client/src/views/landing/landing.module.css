@@ -1,0 +1,30 @@
+.LandingBackground {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.LandingMenu {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.LandingButton {
+  padding: 1rem 4rem;
+  font-size: 1.5rem;
+  background-color: var(--black);
+  border: none;
+  outline: none;
+  color: white;
+  border-radius: 5%;
+  opacity: .9;
+}
+
+.LandingLink {
+  color: white;
+  text-decoration: none;
+}

@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Videogame, Genre, Genres_Videogames } = require('../db.js');
+const { Videogame, Genre, Genre_Videogame } = require('../db.js');
 const axios = require('axios');
 const { API_KEY, API_URL } = process.env;
 const { fn, col, where, Op } = require('sequelize');
@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     const gamesFromApi = response.data.results;
     const gamesFromDb = !searchTerm
       ? await Videogame.findAll()
-      : await Videogame.findAll({ where: where(fn('lower', col('name')), { [Op.like]: `%${searchTerm}%` }) });
+      : await Videogame.findAll({ where: where(fn('lower', col('videogame.name')), { [Op.like]: `%${searchTerm}%` }), include: Genre });
 
     const result = [
       ...gamesFromApi.map(x => ({
@@ -30,7 +30,11 @@ router.get('/', async (req, res) => {
         description: x.description,
         image: x.background_image,
         releaseDate: x.released,
-        rating: x.rating
+        rating: x.rating,
+        genres: x.genres.map(g => ({
+          id: g.id,
+          name: g.name
+        }))
       })),
       ...gamesFromDb.map(x => ({
         id: x.id,
@@ -113,10 +117,8 @@ router.post('/', async (req, res) => {
       image
     })
 
-    if (Array.isArray(genresIds) && genresIds?.length > 0) {
-      await Genres_Videogames.bulkCreate(genresIds.map(genreId => ({ genreId, videogameId: newVideoGame.id })))
-    }
-    console.log(newVideoGame)
+    await Genre_Videogame.bulkCreate(genresIds.map(genreId => ({ genreId, videogameId: newVideoGame.id })));
+  
     res.json(newVideoGame);
   } catch (e) {
     console.log(e);
