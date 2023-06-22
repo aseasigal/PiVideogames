@@ -23,3 +23,13 @@
     background-color: var(--secondary);
     color: white;
   }
+  .CrearButton {
+    align-items: right;
+    border: none;
+    border-radius: 5px;
+    padding: .5rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    background-color: var(--secondary);
+    color: white;
+  }
