@@ -20,16 +20,16 @@ function rootReducer(state = initialState,action){
             }
     case FILTER_BY_GENRE:
         const allGames = state.allGames
-        const genreFiltered = action.payload === "All" ? allGames : allGames.filter( el => el.genres === action.payload)
+        const genreFiltered = action.payload === "All" ? allGames : allGames.filter( el => el.genres.map(x => x.name).includes(action.payload))
         return {
             ...state,
-            allGames: genreFiltered,
             gamesCopy: genreFiltered
         }
     case GET_BY_NAME:
         return{
             ...state,
-            allGames:action.payload
+            allGames:action.payload,
+            gamesCopy:action.payload,
         }
     case CREATE_NEW_GAME:
         return{

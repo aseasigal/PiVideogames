@@ -9,33 +9,32 @@ import Cards from "../../components/cards/cards.component";
 function Home() {
   const dispatch = useDispatch();
   const allGenres = useSelector((state)=>state.allGenres)
-  const allGames = useSelector((state) => state.allGames);
   const gamesCopy = useSelector((state) => state.gamesCopy);
-  const [filtered, setFiltered] = useState(gamesCopy);
   const [searchGame, setSearchGame] = useState("");
   const [currentPage, setCurrentPage] = useState(1)
   const [gamesPerPage, setGamesPerPage] = useState(15)
   const indexOfLastGame = currentPage * gamesPerPage
   const indexOfFirstGame = indexOfLastGame - gamesPerPage
-  const currentGames = allGames.slice(indexOfFirstGame,indexOfLastGame)
+  const currentGames = gamesCopy.slice(indexOfFirstGame,indexOfLastGame)
 
   const paginado = (pageNumber) =>{
     setCurrentPage(pageNumber)
   }
+
   function handleChange(e) {
     e.preventDefault();
     setSearchGame(e.target.value);
   }
 
   function handleFilterGenre(e){
-    dispatch(filterGamesByGenre(e.targe.value))
+    dispatch(filterGamesByGenre(e.target.value))
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     dispatch(getByName(searchGame));
-    setFiltered(allGames);
   }
+
   useEffect(() => {
     dispatch(getGames());
   }, []);
@@ -48,15 +47,15 @@ function Home() {
     
     <div>
       <select onChange={e => handleFilterGenre(e)} >
-      {allGenres?.map((genre)=>(
-        <option value={genre.name}>{genre.name}</option>
+      {allGenres?.map((genre,index)=>(
+        <option key={index} value={genre.name}>{genre.name}</option>
       ))}
       </select>
       <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
       <Cards allGames={currentGames} />
       <Paginado
       gamesPerPage= {gamesPerPage}
-      allGames={allGames.length}
+      allGames={gamesCopy.length}
       paginado={paginado}
       />
     </div>
