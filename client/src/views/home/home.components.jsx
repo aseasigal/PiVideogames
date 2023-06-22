@@ -33,14 +33,14 @@ function Home() {
   useEffect(() => {
     dispatch(getGames());
   }, []);
-  <Paginado
-  gamesPerPage={gamesPerPage}
-  allGames={allGames.length}
-  paginado={paginado}
-  />
-console.log(allGames) 
- return (
+  console.log(allGames) 
+  return (
     <div>
+      <Paginado
+      gamesPerPage= {10}
+      allGames={20}
+      paginado={paginado}
+      />
       <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
       <Cards allGames={filtered} />
     </div>
