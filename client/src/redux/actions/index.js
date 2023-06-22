@@ -3,6 +3,8 @@ export const GET_GAMES= "GET_GAMES"
 export const GET_BY_NAME= "GET_BY_NAME"
 export const CREATE_NEW_GAME = "CREATE_NEW_GAME"
 export const GET_GAMES_DETAIL = "GET_GAMES_DETAIL"
+export const FILTER_BY_GENRE = "FILTER_BY_GENRE"
+export const GET_BY_GENRE = "GET_BY_GENRE"
 
 export function getGames(){
     return async function (dispatch){
@@ -42,5 +44,22 @@ export function getByName(name){
             type:"GET_BY_NAME",
             payload: response.data,
         }) 
+    }
+}
+
+export function getByGenre(){
+    return async function (dispatch){
+        const response = await axios(`http://localhost:3001/api/genres`)
+        return dispatch({
+            type:"GET_BY_GENRE",
+            payload: response.data,
+        }) 
+    }
+}
+
+export function filterGamesByGenre(payload){
+    return{
+        type:"FILTER_BY_GENRE",
+        payload
     }
 }
