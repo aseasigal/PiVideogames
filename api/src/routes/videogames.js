@@ -60,7 +60,7 @@ router.get('/:videogameId', async (req, res) => {
     const isNumberId = !isNaN(Number(id));
 
     if (isNumberId) {
-      const response = await axios.get(`${API_URL}/games/${req.params.videogameId}?key=${API_KEY}`);
+      const response = (await axios.get(`${API_URL}/games/${req.params.videogameId}?key=${API_KEY}`)).data;
       res.json({
         id: response.id,
         uuid: response.uuid,

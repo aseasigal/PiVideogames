@@ -16,7 +16,7 @@ export function getGames(){
 
 export function getGamesDetails(id){
     return async function (dispatch){
-        const response = await axios.get(`http://localhost:3001/api/videogames?name=${id}`)
+        const response = await axios.get(`http://localhost:3001/api/videogames/${id}`)
         return dispatch({
             type:"GET_GAMES_DETAIL",
             payload: response.data
