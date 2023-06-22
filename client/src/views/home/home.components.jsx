@@ -46,12 +46,10 @@ function Home() {
   return (
     
     <div>
-      <select onChange={e => handleFilterGenre(e)} >
-      {allGenres?.map((genre,index)=>(
-        <option key={index} value={genre.name}>{genre.name}</option>
-      ))}
-      </select>
-      <Navbar handleChange={handleChange} handleSubmit={handleSubmit} />
+      <Navbar allGenres={allGenres} 
+      handleChange={handleChange} 
+      handleSubmit={handleSubmit} 
+      handleFilterGenre={handleFilterGenre}/>
       <Cards allGames={currentGames} />
       <Paginado
       gamesPerPage= {gamesPerPage}
